@@ -3,12 +3,14 @@ for (var i = 0; i < arr.length; i++) {
   arr[i].addEventListener("click", function(){
   var btnLabel = this.innerHTML;
   makeSound(btnLabel);
+  addAnimaton(btnLabel);
 });
 }
 
 
 document.addEventListener("keypress", function(event){
 makeSound(event.key);
+addAnimaton(event.key);
 });
 
 
@@ -49,4 +51,15 @@ function makeSound(param) {
     default:
       console.log("No related audio");
   }
+}
+
+
+function addAnimaton(noteClicked)
+{
+  var activeBtn=document.querySelector("."+noteClicked);
+  activeBtn.classList.add("pressed");
+
+  setTimeout(function(){
+    activeBtn.classList.remove("pressed");
+  },100);
 }
